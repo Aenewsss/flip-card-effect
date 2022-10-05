@@ -1,0 +1,69 @@
+$card-color: #f4f4f4;
+$main-color: #161616f7;
+$fs-p: 40px;
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: $main-color;
+}
+
+.container {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        height: 500px;
+        width: 300px;
+        border-radius: 10px;
+        perspective: 1000px;
+
+        .card-inner {
+            position: relative;
+            width: inherit;
+            height: inherit;
+            transition: transform 1.5s;
+            transform-style: preserve-3d;
+
+            .card-back {
+                transform: rotateY(180deg);
+            }
+
+            .card-front,
+            .card-back {
+                position: absolute;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 5px;
+                text-align: center;
+
+                width: inherit;
+                height: inherit;
+
+                backface-visibility: hidden;
+                background-color: $card-color;
+
+                border-radius: 10px;
+                box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.5);
+
+                p {
+                    letter-spacing: 4px;
+                    font-size: $fs-p;
+                }
+            }
+        }
+
+        &:hover .card-inner {
+            transform: rotateY(540deg);
+        }
+    }
+}
